@@ -8,24 +8,24 @@ for item in L:
 
 #Tri par sélection
 
-L= [2,3,1,58,35]
+L= []
 N = len(L)
 for i in range(N):
-    minimum = L[i]
+    min = L[i]
     i_min = i
     for j in range(i, N):
-        if L[j] < minimum:
-            minimum = L[j]
+        if L[j] < min:
+            min= L[j]
             i_min = j
     tmp = L[i]
-    L[i] = minimum
+    L[i] = min
     L[i_min] = tmp
 print("Liste triée: ", L)
 
 
 # Tri par insertion
 
-L = [45,48,69,21,12]
+L = []
 for i in range(1, len(L)):
     val = L[i]
     j = i - 1
