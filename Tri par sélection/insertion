@@ -34,3 +34,25 @@ for i in range(1, len(L)):
         L[j] = val
         j = j - 1
 print(L)
+
+#Faire une Class
+
+class NomdelaClass:
+    def__init__(self):
+        self.attribut = " un truc"
+
+
+    def methode (self.argument):
+        calcul 2+1
+        return calcul
+    
+# Class kdo
+
+class Kdos:
+    def __init__(self):
+        self.valeur = rd.randint(1,100)
+n =200
+L=[]
+for i in range(n): 
+    tempKdo = Kdos()
+    L.append(tempKdo)
