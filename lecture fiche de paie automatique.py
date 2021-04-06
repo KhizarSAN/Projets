@@ -1,7 +1,6 @@
 import openpyxl
 
 wb = openpyxl.load_workbook("C:\\Users\\konhotom\\Desktop\\exemple.xlsx")
-pages = wb.sheetnames
 pg1 = wb['Fiche_de_paie']
 data1 = pg1['E12'].value
 data2 = pg1['F12'].value
