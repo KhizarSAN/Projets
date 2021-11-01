@@ -1,0 +1,20 @@
+import os
+import comtypes.client
+
+#Endroit ou on récupère le fichier
+SOURCE_DIR = r'C:\Users\username\Desktop'
+#Endroit ou on transfère le fichier
+TARGET_DIR = r'C:\Users\konhotom\Desktop'
+
+app = comtypes.client.CreateObject('Excel.Application')
+app.Visible = False
+
+#Nom du fichier et dans ce que l'on tranforme 
+infile = os.path.join(os.path.abspath(SOURCE_DIR), 'projet.xlsx')
+outfile = os.path.join(os.path.abspath(TARGET_DIR), 'projet.pdf')
+
+doc = app.Workbooks.Open(infile)
+doc.ExportAsFixedFormat(0, outfile, 1, 0)
+doc.Close()
+
+app.Quit()
