@@ -1,0 +1,42 @@
+import socket
+import struct
+import sys
+
+# Fonction de chiffrement des données
+def encrypt(data):
+    # Implémentation de l'algorithme de chiffrement
+    encrypted_data = data  # Placeholder, remplacer par votre propre algorithme de chiffrement
+    return encrypted_data
+
+# Fonction de déchiffrement des données
+def decrypt(data):
+    # Implémentation de l'algorithme de déchiffrement
+    decrypted_data = data  # Placeholder, remplacer par votre propre algorithme de déchiffrement
+    return decrypted_data
+
+# Création d'un socket TCP/IP
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Liaison du socket à une adresse et un port
+server_address = ('localhost', 10000)
+sock.bind(server_address)
+
+# Écoute des connexions entrantes
+sock.listen(1)
+
+# Attente et acceptation des connexions
+connection, client_address = sock.accept()
+try:
+    # Réception des données en plusieurs paquets et reconstruction de la donnée originale
+    while True:
+        data = connection.recv(4096)
+        if data:
+            # Déchiffrement des données reçues
+            original_data = decrypt(data)
+            # Envoi des données déchiffrées au client
+            connection.sendall(original_data)
+        else:
+            break
+finally:
+    # Fermeture de la connexion
+    connection.close()
