@@ -1,0 +1,56 @@
+
+import pygame
+
+# Initialise Pygame
+pygame.init()
+
+# Définit la largeur et la hauteur de la fenêtre
+window_size = (400, 400)
+
+# Crée une fenêtre avec la taille spécifiée
+screen = pygame.display.set_mode(window_size)
+
+# Charge une image à partir d'un fichier et la convertit en un objet utilisable par Pygame
+player_image = pygame.image.load("player.png").convert()
+
+# Définit la vitesse de déplacement du joueur en pixels par frame
+move_speed = 5
+
+# Définit la position du joueur en tant que tuple (x, y)
+player_pos = (0, 0)
+
+# Définit la boucle de jeu
+running = True
+while running:
+  # Parcours tous les événements de la file d'attente
+  for event in pygame.event.get():
+    # Si l'événement est de type QUIT (fermeture de la fenêtre), arrête la boucle de jeu
+    if event.type == pygame.QUIT:
+      running = False
+  
+  # Récupère les entrées du clavier
+  keys = pygame.key.get_pressed()
+  
+  # Si la touche gauche ou droite est enfoncée, déplace le joueur horizontalement
+  if keys[pygame.K_LEFT]:
+    player_pos = (player_pos[0] - move_speed, player_pos[1])
+  elif keys[pygame.K_RIGHT]:
+    player_pos = (player_pos[0] + move_speed, player_pos[1])
+  
+  # Si la touche haut ou bas est enfoncée, déplace le joueur verticalement
+  if keys[pygame.K_UP]:
+    player_pos = (player_pos[0], player_pos[1] - move_speed)
+  elif keys[pygame.K_DOWN]:
+    player_pos = (player_pos[0], player_pos[1] + move_speed)
+  
+  # Remplit l'écran de noir (efface tout ce qui était dessiné précédemment)
+  screen.fill((0, 0, 0))
+  
+  # Dessine le joueur à sa position actuelle
+  screen.blit(player_image, player_pos)
+  
+  # Met à jour l'affichage
+  pygame.display.flip()
+
+# Quitte Pygame
+pygame.quit()
