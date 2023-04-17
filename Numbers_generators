@@ -1,0 +1,27 @@
+import random
+
+def generate_phone_numbers(num):
+    """
+    Génère une liste de numéros de téléphone aléatoires commençant par 06 ou 07 et comportant 9 chiffres en tout.
+    
+    :param num: Le nombre de numéros à générer.
+    :return: Une liste de numéros de téléphone aléatoires.
+    """
+    phone_numbers = []
+    while len(phone_numbers) < num:
+        phone_number = "06" + str(random.randint(10**7, 10**8 - 1)) # Génère un numéro commençant par 06 et comportant 9 chiffres
+        phone_number = phone_number[:2] + phone_number[3:] # Supprime un chiffre aléatoire
+        if phone_number not in phone_numbers: # Vérifie si le numéro n'est pas déjà dans la liste
+            phone_numbers.append(phone_number)
+        
+        phone_number = "07" + str(random.randint(10**7, 10**8 - 1)) # Génère un numéro commençant par 07 et comportant 9 chiffres
+        phone_number = phone_number[:2] + phone_number[3:] # Supprime un chiffre aléatoire
+        if phone_number not in phone_numbers: # Vérifie si le numéro n'est pas déjà dans la liste
+            phone_numbers.append(phone_number)
+    
+    return phone_numbers
+
+# Exemple d'utilisation
+num = int(input("Combien de numéros voulez-vous générer ? "))
+phone_numbers = generate_phone_numbers(num)
+print(phone_numbers)
